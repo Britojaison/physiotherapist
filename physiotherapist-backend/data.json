@@ -59,6 +59,29 @@
         "holdTime": 5,
         "side": "Right"
       }
+    ],
+    [
+      {
+        "name": "Plank",
+        "sets": 3,
+        "reps": 10,
+        "holdTime": 5,
+        "side": "Right"
+      },
+      {
+        "name": "Plank",
+        "sets": 3,
+        "reps": 10,
+        "holdTime": 5,
+        "side": "Both"
+      },
+      {
+        "name": "Lunges",
+        "sets": "4",
+        "reps": "16",
+        "holdTime": 5,
+        "side": "Right"
+      }
     ]
   ]
 }

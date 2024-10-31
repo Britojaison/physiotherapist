@@ -27,8 +27,9 @@ function CategoryDropdown({ onExerciseSelect }) {
   };
 
   return (
-    <div>
-      <label>Choose Body Part Category:</label>
+    <div  className="category-dropdown">
+
+      <label className='label'>Choose Body Part Category:</label>
       <div className="dropdown">
         {categories.map((part) => (
           <div

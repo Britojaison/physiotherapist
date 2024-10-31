@@ -139,18 +139,20 @@ function ExerciseList() {
             <CategoryDropdown onExerciseSelect={handleAddExercise} />
 
             <h3>Exercise Parameters</h3>
-            {exercises.map((exercise, index) => (
-                <DraggableExercise
-                    key={index}
-                    index={index}
-                    exercise={exercise}
-                    moveExercise={moveExercise}
-                    handleDuplicate={handleDuplicate}
-                    handleDelete={handleDelete}
-                    handleParamChange={handleParamChange}
-                />
-            ))}
-            <button onClick={handleSaveCombo}>Save as Combo</button>
+            <div className="container">
+                {exercises.map((exercise, index) => (
+                    <DraggableExercise
+                        key={index}
+                        index={index}
+                        exercise={exercise}
+                        moveExercise={moveExercise}
+                        handleDuplicate={handleDuplicate}
+                        handleDelete={handleDelete}
+                        handleParamChange={handleParamChange}
+                    />
+                ))}
+            </div>
+            <button onClick={handleSaveCombo} style={{marginRight:'.5rem'}}>Save as Combo</button>
             <button onClick={handleClearAll}>Clear All</button>
 
             <h3>Saved Combos</h3>

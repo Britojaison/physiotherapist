@@ -1,3 +1,10 @@
+.container{
+  padding: 2rem;  
+  border: .08rem solid rgba(168, 167, 167, 0.657);
+  border-radius: 2%;
+  margin-bottom: 1rem ;
+}
+
 .exercise-params {
   display: flex;
   gap: 1rem;
