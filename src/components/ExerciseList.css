@@ -1,0 +1,33 @@
+.exercise-params {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .exercise-params label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+  }
+  
+  .exercise-params input,
+  .exercise-params select {
+    padding: 4px;
+    font-size: 14px;
+    margin-top: 4px;
+    width: 60px;
+  }
+  .exercise-params {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 8px;
+    border: 1px solid #ddd;
+    cursor: move;
+    background-color: #f9f9f9;
+  }
+  
+  .exercise-params.dragged {
+    opacity: 0.5;
+  }
+    

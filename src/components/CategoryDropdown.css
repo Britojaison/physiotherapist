@@ -1,0 +1,31 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .dropdown-item {
+    padding: 8px;
+    background-color: #da1e1e;
+  }
+  
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: block;
+    background-color: #180808;
+    border: 1px solid #ccc;
+    z-index: 1;
+    padding: 8px;
+  }
+  
+  .submenu-item {
+    padding: 4px 8px;
+  }
+  .selected-exercise {
+    font-weight: bold;
+    color: #adaf25;
+    padding: 8px;
+  }
+  
