@@ -1,10 +1,11 @@
 import React from 'react';
+import './Notes.css'
 
 function Notes() {
   return (
     <div>
-      <label>Therapist Notes:</label>
-      <textarea rows="4" cols="50" placeholder="Enter notes here..." />
+      <label className='label-note'>Therapist Notes:</label>
+      <textarea className='textarea-note' rows="4" cols="50" placeholder="Enter notes here..." />
     </div>
   );
 }

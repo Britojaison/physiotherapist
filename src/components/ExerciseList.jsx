@@ -1,10 +1,10 @@
-// src/components/ExerciseList.jsx
 import React, { useState, useEffect } from 'react';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import CategoryDropdown from './CategoryDropdown';
 import { saveProgram, fetchSavedPrograms } from '../api';
 import './ExerciseList.css';
+import Notes from './Notes';
 
 const ItemType = 'EXERCISE';
 function DraggableExercise({ exercise, index, moveExercise, handleDuplicate, handleParamChange, handleDelete }) {
@@ -152,17 +152,20 @@ function ExerciseList() {
                     />
                 ))}
             </div>
-            <button onClick={handleSaveCombo} style={{marginRight:'.5rem'}}>Save as Combo</button>
+            <button onClick={handleSaveCombo} style={{ marginRight: '.5rem' }}>Save as Combo</button>
             <button onClick={handleClearAll}>Clear All</button>
 
             <h3>Saved Combos</h3>
-            <ul>
-                {savedCombos.map((combo, idx) => (
-                    <li key={idx}>
-                        Combo {idx + 1}: {combo.map((ex) => ex.name).join(', ')}
-                    </li>
-                ))}
-            </ul>
+            <div className="saved-combos">
+                <ul>
+                    {savedCombos.map((combo, idx) => (
+                        <li key={idx}>
+                            Combo {idx + 1}: {combo.map((ex) => ex.name).join(', ')}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+
         </DndProvider>
     );
 }

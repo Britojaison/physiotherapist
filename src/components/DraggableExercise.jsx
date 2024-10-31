@@ -63,7 +63,7 @@ function DraggableExercise({ exercise, index, moveExercise, handleDuplicate, han
         </select>
       </label>
       <button onClick={() => handleDuplicate(index)}>Duplicate</button>
-      <button onClick={() => handleDelete(index)}>Delete</button> {/* Add delete button */}
+      <button onClick={() => handleDelete(index)}>Delete</button> 
     </div>
   );
 }

@@ -82,6 +82,66 @@
         "holdTime": 5,
         "side": "Right"
       }
+    ],
+    [
+      {
+        "name": "Bicep Curls",
+        "sets": 3,
+        "reps": 10,
+        "holdTime": 5,
+        "side": "Right"
+      },
+      {
+        "name": "Bicep Curls",
+        "sets": 3,
+        "reps": 10,
+        "holdTime": 5,
+        "side": "Left"
+      },
+      {
+        "name": "Push Ups",
+        "sets": 3,
+        "reps": 10,
+        "holdTime": 5,
+        "side": "Right"
+      },
+      {
+        "name": "Squats",
+        "sets": 3,
+        "reps": 10,
+        "holdTime": 5,
+        "side": "Both"
+      }
+    ],
+    [
+      {
+        "name": "Push Ups",
+        "sets": 3,
+        "reps": 10,
+        "holdTime": 5,
+        "side": "Left"
+      },
+      {
+        "name": "Bicep Curls",
+        "sets": 3,
+        "reps": 10,
+        "holdTime": 5,
+        "side": "Right"
+      },
+      {
+        "name": "Squats",
+        "sets": 3,
+        "reps": 10,
+        "holdTime": 5,
+        "side": "Both"
+      },
+      {
+        "name": "Russian Twists",
+        "sets": 3,
+        "reps": 10,
+        "holdTime": 5,
+        "side": "Right"
+      }
     ]
   ]
 }

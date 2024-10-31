@@ -15,18 +15,15 @@ const readData = () => {
   return JSON.parse(data);
 };
 
-// Helper function to write to data.json
 const writeData = (data) => {
   fs.writeFileSync('./data.json', JSON.stringify(data, null, 2));
 };
 
-// Endpoint to fetch categories and exercises
 app.get('/api/exercises', (req, res) => {
   const data = readData();
   res.json(data.categories);
 });
 
-// Endpoint to save a new exercise program
 app.post('/api/programs', (req, res) => {
   const data = readData();
   data.programs.push(req.body);
@@ -34,7 +31,6 @@ app.post('/api/programs', (req, res) => {
   res.json({ message: 'Program saved successfully!' });
 });
 
-// Endpoint to fetch saved programs
 app.get('/api/programs', (req, res) => {
   const data = readData();
   res.json(data.programs);

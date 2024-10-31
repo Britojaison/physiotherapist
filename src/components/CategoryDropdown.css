@@ -1,68 +1,62 @@
-/* Styles for the main dropdown container */
-.category-dropdown{
+.category-dropdown {
   display: flex;
   gap: 1rem;
 }
 
-.label{
+.label {
   font-size: 1.1rem;
   margin-top: 1rem;
 }
+
 .dropdown {
   display: flex;
-  gap: 10px; /* Adds space between main items */
+  gap: 10px;
   cursor: pointer;
   margin-top: 10px;
 }
 
-/* Main dropdown items (categories) */
 .dropdown-item {
   position: relative;
   padding: 10px 15px;
-  background-color: #4a90e2; /* Light blue background for categories */
-  color: #ffffff; /* White text color */
+  background-color: #4a90e2;
+  color: #ffffff;
   font-weight: 600;
   border-radius: 5px;
   transition: background-color 0.3s;
 }
 
-/* Hover effect for main dropdown items */
 .dropdown-item:hover {
-  background-color: #3a78c1; /* Darker blue on hover */
+  background-color: #3a78c1;
 }
 
-/* Submenu container, appears below the main item when hovered */
 .submenu {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #f1f1f1; /* Light grey background for submenu */
-  border: 1px solid #ddd; /* Light grey border */
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
   border-radius: 5px;
   padding: 8px 0;
-  min-width: 150px; /* Ensure submenu has enough width */
+  min-width: 150px;
   z-index: 1;
 }
 
-/* Submenu item styles */
 .submenu-item {
   padding: 8px 12px;
-  color: #333; /* Darker text for submenu items */
-  background-color: #f1f1f1; /* Matches submenu background */
+  color: #333;
+  background-color: #f1f1f1;
   transition: background-color 0.3s;
 }
 
-/* Hover effect for submenu items */
 .submenu-item:hover {
-  background-color: #d9d9d9; /* Slightly darker grey for hover */
+  background-color: #d9d9d9;
   color: #000000;
   font-weight: 500;
 }
 
-/* Selected exercise styling */
 .selected-exercise {
   font-weight: bold;
-  color: #e67e22; /* Orange color for selected exercise */
+  color: #e67e22;
   padding: 8px;
   display: block;
   margin-top: 10px;
