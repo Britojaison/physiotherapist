@@ -9,9 +9,9 @@ const cors = require("cors");
 
 app.use(cors());
 
-// Helper function to read data.json
 const readData = () => {
   const data = fs.readFileSync('./data.json');
+  console.log("reading yaa reading!")
   return JSON.parse(data);
 };
 

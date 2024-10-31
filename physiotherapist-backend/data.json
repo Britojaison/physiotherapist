@@ -53,18 +53,11 @@
     ],
     [
       {
-        "name": "Push Ups",
-        "sets": "7",
-        "reps": 10,
-        "holdTime": "12",
-        "side": "Right"
-      },
-      {
-        "name": "Russian Twists",
+        "name": "Plank",
         "sets": 3,
         "reps": 10,
         "holdTime": 5,
-        "side": "Both"
+        "side": "Right"
       }
     ]
   ]

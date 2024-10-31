@@ -1,12 +1,13 @@
 .dropdown {
     position: relative;
+    
     display: inline-block;
     cursor: pointer;
   }
   
   .dropdown-item {
     padding: 8px;
-    background-color: #da1e1e;
+    background-color: #e28a8a;
   }
   
   .submenu {
