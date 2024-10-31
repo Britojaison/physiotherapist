@@ -1,0 +1,71 @@
+{
+  "categories": [
+    {
+      "category": "Lower Body",
+      "exercises": [
+        "Squats",
+        "Lunges",
+        "Leg Raises"
+      ]
+    },
+    {
+      "category": "Upper Body",
+      "exercises": [
+        "Push Ups",
+        "Bicep Curls",
+        "Shoulder Press"
+      ]
+    },
+    {
+      "category": "Core",
+      "exercises": [
+        "Plank",
+        "Russian Twists",
+        "Bicycle Crunches"
+      ]
+    }
+  ],
+  "programs": [
+    [
+      {
+        "name": "Plank",
+        "sets": 3,
+        "reps": 10,
+        "holdTime": 5,
+        "side": "Both"
+      },
+      {
+        "name": "Squats",
+        "sets": 3,
+        "reps": 10,
+        "holdTime": 5,
+        "side": "Left"
+      }
+    ],
+    [
+      {
+        "name": "Push Ups",
+        "sets": "7",
+        "reps": 10,
+        "holdTime": "12",
+        "side": "Right"
+      }
+    ],
+    [
+      {
+        "name": "Push Ups",
+        "sets": "7",
+        "reps": 10,
+        "holdTime": "12",
+        "side": "Right"
+      },
+      {
+        "name": "Russian Twists",
+        "sets": 3,
+        "reps": 10,
+        "holdTime": 5,
+        "side": "Both"
+      }
+    ]
+  ]
+}

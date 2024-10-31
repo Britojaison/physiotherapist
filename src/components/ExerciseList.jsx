@@ -1,14 +1,91 @@
+// src/components/ExerciseList.jsx
 import React, { useState, useEffect } from 'react';
-import { DndProvider } from 'react-dnd';
+import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import DraggableExercise from './DraggableExercise'; // Make sure to import the DraggableExercise component
+import CategoryDropdown from './CategoryDropdown';
+import { saveProgram, fetchSavedPrograms } from '../api';
 
-function ExerciseList({ selectedExercise }) {
+const ItemType = 'EXERCISE';
+
+function DraggableExercise({ exercise, index, moveExercise, handleDuplicate, handleParamChange, handleDelete }) {
+  const [, ref] = useDrag({
+    type: ItemType,
+    item: { index },
+  });
+
+  const [, drop] = useDrop({
+    accept: ItemType,
+    hover: (draggedItem) => {
+      if (draggedItem.index !== index) {
+        moveExercise(draggedItem.index, index);
+        draggedItem.index = index;
+      }
+    },
+  });
+
+  return (
+    <div ref={(node) => ref(drop(node))} className="exercise-params">
+      <label>
+        Exercise: <strong>{exercise.name}</strong>
+      </label>
+      <label>
+        Sets:
+        <input
+          type="number"
+          value={exercise.sets}
+          onChange={(e) => handleParamChange(index, 'sets', e.target.value)}
+          min="1"
+        />
+      </label>
+      <label>
+        Reps:
+        <input
+          type="number"
+          value={exercise.reps}
+          onChange={(e) => handleParamChange(index, 'reps', e.target.value)}
+          min="1"
+        />
+      </label>
+      <label>
+        Hold Time (sec):
+        <input
+          type="number"
+          value={exercise.holdTime}
+          onChange={(e) => handleParamChange(index, 'holdTime', e.target.value)}
+          min="0"
+        />
+      </label>
+      <label>
+        Side:
+        <select
+          value={exercise.side}
+          onChange={(e) => handleParamChange(index, 'side', e.target.value)}
+        >
+          <option value="Left">Left</option>
+          <option value="Right">Right</option>
+          <option value="Both">Both</option>
+        </select>
+      </label>
+      <button onClick={() => handleDuplicate(index)}>Duplicate</button>
+      <button onClick={() => handleDelete(index)}>Delete</button>
+    </div>
+  );
+}
+
+function ExerciseList() {
   const [exercises, setExercises] = useState([]);
   const [savedCombos, setSavedCombos] = useState([]);
 
-  // Update exercises list when selectedExercise changes
   useEffect(() => {
+    loadSavedCombos();
+  }, []);
+
+  const loadSavedCombos = async () => {
+    const savedCombos = await fetchSavedPrograms();
+    setSavedCombos(savedCombos);
+  };
+
+  const handleAddExercise = (selectedExercise) => {
     if (selectedExercise) {
       setExercises((prevExercises) => [
         ...prevExercises,
@@ -21,7 +98,7 @@ function ExerciseList({ selectedExercise }) {
         },
       ]);
     }
-  }, [selectedExercise]);
+  };
 
   const handleParamChange = (index, field, value) => {
     const updatedExercises = [...exercises];
@@ -37,6 +114,11 @@ function ExerciseList({ selectedExercise }) {
     setExercises((prevExercises) => [...prevExercises, duplicateExercise]);
   };
 
+  const handleDelete = (index) => {
+    const updatedExercises = exercises.filter((_, i) => i !== index);
+    setExercises(updatedExercises);
+  };
+
   const moveExercise = (fromIndex, toIndex) => {
     const updatedExercises = [...exercises];
     const [movedExercise] = updatedExercises.splice(fromIndex, 1);
@@ -44,21 +126,20 @@ function ExerciseList({ selectedExercise }) {
     setExercises(updatedExercises);
   };
 
-  const handleSaveCombo = () => {
-    setSavedCombos((prevCombos) => [...prevCombos, exercises]);
+  const handleSaveCombo = async () => {
+    await saveProgram(exercises);
     alert('Combo saved successfully!');
+    loadSavedCombos(); // Reload saved combos after saving
   };
 
   const handleClearAll = () => {
     setExercises([]);
   };
 
-  const handleDelete = (index) => {
-    setExercises((prevExercises) => prevExercises.filter((_, i) => i !== index));
-  };
-
   return (
     <DndProvider backend={HTML5Backend}>
+      <CategoryDropdown onExerciseSelect={handleAddExercise} />
+
       <h3>Exercise Parameters</h3>
       {exercises.map((exercise, index) => (
         <DraggableExercise
@@ -67,7 +148,7 @@ function ExerciseList({ selectedExercise }) {
           exercise={exercise}
           moveExercise={moveExercise}
           handleDuplicate={handleDuplicate}
-          handleDelete={handleDelete} // Pass handleDelete function
+          handleDelete={handleDelete}
           handleParamChange={handleParamChange}
         />
       ))}
@@ -82,7 +163,7 @@ function ExerciseList({ selectedExercise }) {
           </li>
         ))}
       </ul>
-    </DndProvider>
+    </DndProvider>  
   );
 }
 

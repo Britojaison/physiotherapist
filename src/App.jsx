@@ -3,13 +3,14 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ExerciseAssignment from './pages/ExerciseAssignment';
+import ExerciseList from './components/ExerciseList';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-    <ExerciseAssignment />
+    <h1>Physiotherapy Exercise Planner</h1>
+    <ExerciseList />
       
     </>
   )
