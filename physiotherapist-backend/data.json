@@ -47,6 +47,40 @@
         2,
         4
       ]
+    },
+    {
+      "exercises": [
+        {
+          "name": "Squats",
+          "sets": 3,
+          "reps": 10,
+          "holdTime": 5,
+          "side": "Left"
+        }
+      ],
+      "days": []
+    },
+    {
+      "exercises": [
+        {
+          "name": "Squats",
+          "sets": 5,
+          "reps": 10,
+          "holdTime": 5,
+          "side": "Left"
+        },
+        {
+          "name": "Bicep Curls",
+          "sets": 3,
+          "reps": 10,
+          "holdTime": 5,
+          "side": "Left"
+        }
+      ],
+      "days": [
+        1,
+        0
+      ]
     }
   ]
 }

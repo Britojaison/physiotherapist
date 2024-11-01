@@ -11,7 +11,7 @@
   gap: 1rem;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
-  padding: 12px;
+  padding: 6px;
   border-radius: 12px;
   background-color: #e0f7fa;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -38,9 +38,49 @@
   border-radius: 6px;
 }
 
+.exercise-control {
+  display: flex;
+  align-items: baseline;
+  background-color: #f7f7f7; /* Light background */
+  border-radius: 5px; /* Rounded corners */
+  padding: 8px 12px; /* Padding for space */
+  margin: 5px; /* Space between controls */
+}
+
+.label {
+  margin-right: 10px; /* Space between label and button */
+  font-weight: bold; /* Make label bold */
+}
+
+.control-button {
+  background-color: #e0e0e0; /* Light grey background for buttons */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded button corners */
+  padding: 8px; /* Padding inside buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Button text size */
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.control-button:disabled {
+  background-color: #d3d3d3; /* Darker grey when disabled */
+  cursor: not-allowed; /* Not allowed cursor */
+}
+
+.control-button:hover:not(:disabled) {
+  background-color: #b0b0b0; /* Darker grey on hover */
+}
+
+.value {
+  margin: 0 10px; /* Space between buttons and value */
+  font-weight: bold; /* Make value bold */
+  font-size: 16px; /* Adjust value text size */
+}
+
+
 button {
   border: none;
-  padding: 8px 12px;
+  padding: 4px 8px;
   border-radius: 8px;
   background-color: #00796b;
   color: white;
@@ -50,6 +90,24 @@ button {
 
 button:hover {
   background-color: #004d40;
+}
+
+.duplicate-btn{
+  text-align: center;
+  width: 5.2rem;
+  height: 3rem;
+}
+
+.delete-btn{
+  text-align: center;
+  width: 0px;
+ 
+}
+
+.delete-bin{
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }
 
 .clear-button {

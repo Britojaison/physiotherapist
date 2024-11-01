@@ -5,8 +5,20 @@ import CategoryDropdown from './CategoryDropdown';
 import { saveProgram, fetchSavedPrograms } from '../api';
 import './ExerciseList.css';
 import Notes from './Notes';
+import bin from "../assets/bin.png";
 
 const ItemType = 'EXERCISE';
+
+const ExerciseControl = ({ label, value, onIncrement, onDecrement }) => {
+    return (
+        <div className="exercise-control">
+            <span className="label">{label}</span>
+            <button className="control-button" onClick={onDecrement} disabled={value <= 0}>–</button>
+            <span className="value">{value}</span>
+            <button className="control-button" onClick={onIncrement}>+</button>
+        </div>
+    );
+};
 
 function DraggableExercise({ exercise, index, moveExercise, handleDuplicate, handleParamChange, handleDelete }) {
     const [, ref] = useDrag({
@@ -28,18 +40,35 @@ function DraggableExercise({ exercise, index, moveExercise, handleDuplicate, han
         handleParamChange(index, 'side', newSide);
     };
 
+    const handleIncrement = (param) => {
+        handleParamChange(index, param, exercise[param] + 1);
+    };
+
+    const handleDecrement = (param) => {
+        handleParamChange(index, param, exercise[param] > 0 ? exercise[param] - 1 : 0);
+    };
+
     return (
         <div ref={(node) => ref(drop(node))} className="exercise-params">
             <label>Exercise: <strong>{exercise.name}</strong></label>
-            <label>Sets:
-                <input type="number" value={exercise.sets} onChange={(e) => handleParamChange(index, 'sets', e.target.value)} min="1" />
-            </label>
-            <label>Reps:
-                <input type="number" value={exercise.reps} onChange={(e) => handleParamChange(index, 'reps', e.target.value)} min="1" />
-            </label>
-            <label>Hold Time (sec):
-                <input type="number" value={exercise.holdTime} onChange={(e) => handleParamChange(index, 'holdTime', e.target.value)} min="0" />
-            </label>
+            <ExerciseControl
+                label="Sets"
+                value={exercise.sets}
+                onIncrement={() => handleIncrement('sets')}
+                onDecrement={() => handleDecrement('sets')}
+            />
+            <ExerciseControl
+                label="Reps"
+                value={exercise.reps}
+                onIncrement={() => handleIncrement('reps')}
+                onDecrement={() => handleDecrement('reps')}
+            />
+            <ExerciseControl
+                label="Hold Time (sec)"
+                value={exercise.holdTime}
+                onIncrement={() => handleIncrement('holdTime')}
+                onDecrement={() => handleDecrement('holdTime')}
+            />
             <label>Side:
                 <div className="toggle-slider">
                     <input
@@ -65,8 +94,8 @@ function DraggableExercise({ exercise, index, moveExercise, handleDuplicate, han
                     <div className="toggle-button"></div>
                 </div>
             </label>
-            <button onClick={() => handleDuplicate(index)}>Duplicate</button>
-            <button onClick={() => handleDelete(index)}>Delete</button>
+            <button className='duplicate-btn' onClick={() => handleDuplicate(index)}>Duplicate</button>
+           <img className='delete-bin' src={bin} onClick={() => handleDelete(index)}/>
         </div>
     );
 }
@@ -96,6 +125,7 @@ function ExerciseList() {
     const [exercises, setExercises] = useState([]);
     const [savedCombos, setSavedCombos] = useState([]);
     const [selectedDays, setSelectedDays] = useState([]);
+    const [sessions, setSessions] = useState(10);
 
     useEffect(() => {
         loadSavedCombos();
@@ -171,7 +201,7 @@ function ExerciseList() {
         setExercises([]);
         setSelectedDays([]);
     };
-    const [sessions, setSessions] = useState(10);
+   
 
     const handleDecrement = () => {
         if (sessions > 0) {
