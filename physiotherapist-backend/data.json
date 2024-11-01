@@ -26,122 +26,27 @@
     }
   ],
   "programs": [
-    [
-      {
-        "name": "Plank",
-        "sets": 3,
-        "reps": 10,
-        "holdTime": 5,
-        "side": "Both"
-      },
-      {
-        "name": "Squats",
-        "sets": 3,
-        "reps": 10,
-        "holdTime": 5,
-        "side": "Left"
-      }
-    ],
-    [
-      {
-        "name": "Push Ups",
-        "sets": "7",
-        "reps": 10,
-        "holdTime": "12",
-        "side": "Right"
-      }
-    ],
-    [
-      {
-        "name": "Plank",
-        "sets": 3,
-        "reps": 10,
-        "holdTime": 5,
-        "side": "Right"
-      }
-    ],
-    [
-      {
-        "name": "Plank",
-        "sets": 3,
-        "reps": 10,
-        "holdTime": 5,
-        "side": "Right"
-      },
-      {
-        "name": "Plank",
-        "sets": 3,
-        "reps": 10,
-        "holdTime": 5,
-        "side": "Both"
-      },
-      {
-        "name": "Lunges",
-        "sets": "4",
-        "reps": "16",
-        "holdTime": 5,
-        "side": "Right"
-      }
-    ],
-    [
-      {
-        "name": "Bicep Curls",
-        "sets": 3,
-        "reps": 10,
-        "holdTime": 5,
-        "side": "Right"
-      },
-      {
-        "name": "Bicep Curls",
-        "sets": 3,
-        "reps": 10,
-        "holdTime": 5,
-        "side": "Left"
-      },
-      {
-        "name": "Push Ups",
-        "sets": 3,
-        "reps": 10,
-        "holdTime": 5,
-        "side": "Right"
-      },
-      {
-        "name": "Squats",
-        "sets": 3,
-        "reps": 10,
-        "holdTime": 5,
-        "side": "Both"
-      }
-    ],
-    [
-      {
-        "name": "Push Ups",
-        "sets": 3,
-        "reps": 10,
-        "holdTime": 5,
-        "side": "Left"
-      },
-      {
-        "name": "Bicep Curls",
-        "sets": 3,
-        "reps": 10,
-        "holdTime": 5,
-        "side": "Right"
-      },
-      {
-        "name": "Squats",
-        "sets": 3,
-        "reps": 10,
-        "holdTime": 5,
-        "side": "Both"
-      },
-      {
-        "name": "Russian Twists",
-        "sets": 3,
-        "reps": 10,
-        "holdTime": 5,
-        "side": "Right"
-      }
-    ]
+    {
+      "exercises": [
+        {
+          "name": "Squats",
+          "sets": 3,
+          "reps": 10,
+          "holdTime": 5,
+          "side": "Left"
+        },
+        {
+          "name": "Bicep Curls",
+          "sets": 3,
+          "reps": 10,
+          "holdTime": 5,
+          "side": "Left"
+        }
+      ],
+      "days": [
+        2,
+        4
+      ]
+    }
   ]
 }

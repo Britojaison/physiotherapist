@@ -11,7 +11,6 @@ function App() {
     <>
     <h1>Physiotherapy Exercise Planner</h1>
     <ExerciseList />
-    <Notes />
       
     </>
   )

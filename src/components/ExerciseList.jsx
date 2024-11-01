@@ -7,6 +7,7 @@ import './ExerciseList.css';
 import Notes from './Notes';
 
 const ItemType = 'EXERCISE';
+
 function DraggableExercise({ exercise, index, moveExercise, handleDuplicate, handleParamChange, handleDelete }) {
     const [, ref] = useDrag({
         type: ItemType,
@@ -70,17 +71,44 @@ function DraggableExercise({ exercise, index, moveExercise, handleDuplicate, han
     );
 }
 
+function WeekdaysSelector({ selectedDays, onDaySelect, toggleAllDays }) {
+    const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S']; // Abbreviated day initials
+
+    return (
+        <div className="days-selector">
+            <button className="select-all-button" onClick={toggleAllDays}>
+                {selectedDays.length === 7 ? 'Unselect All' : 'Select All'}
+            </button>
+            {days.map((day, index) => (
+                <div
+                    key={index}
+                    className={`day-circle ${selectedDays.includes(index) ? 'selected' : ''}`}
+                    onClick={() => onDaySelect(index)}
+                >
+                    {day}
+                </div>
+            ))}
+        </div>
+    );
+}
+
 function ExerciseList() {
     const [exercises, setExercises] = useState([]);
     const [savedCombos, setSavedCombos] = useState([]);
+    const [selectedDays, setSelectedDays] = useState([]);
 
     useEffect(() => {
         loadSavedCombos();
     }, []);
 
     const loadSavedCombos = async () => {
-        const savedCombos = await fetchSavedPrograms();
-        setSavedCombos(savedCombos);
+        try {
+            const fetchedCombos = await fetchSavedPrograms();
+            setSavedCombos(fetchedCombos || []); // Fallback to empty array
+        } catch (error) {
+            console.error('Failed to load saved combos:', error);
+            setSavedCombos([]); // Ensure empty array on error
+        }
     };
 
     const handleAddExercise = (selectedExercise) => {
@@ -92,7 +120,7 @@ function ExerciseList() {
                     sets: 3,
                     reps: 10,
                     holdTime: 5,
-                    side: 'Both',
+                    side: 'Left',
                 },
             ]);
         }
@@ -106,15 +134,12 @@ function ExerciseList() {
 
     const handleDuplicate = (index) => {
         const duplicateExercise = { ...exercises[index] };
-        if (duplicateExercise.side === 'Left') duplicateExercise.side = 'Right';
-        else if (duplicateExercise.side === 'Right') duplicateExercise.side = 'Left';
-
+        duplicateExercise.side = duplicateExercise.side === 'Left' ? 'Right' : 'Left';
         setExercises((prevExercises) => [...prevExercises, duplicateExercise]);
     };
 
     const handleDelete = (index) => {
-        const updatedExercises = exercises.filter((_, i) => i !== index);
-        setExercises(updatedExercises);
+        setExercises(exercises.filter((_, i) => i !== index));
     };
 
     const moveExercise = (fromIndex, toIndex) => {
@@ -124,14 +149,27 @@ function ExerciseList() {
         setExercises(updatedExercises);
     };
 
+    const handleDaySelect = (dayIndex) => {
+        setSelectedDays((prevSelectedDays) =>
+            prevSelectedDays.includes(dayIndex)
+                ? prevSelectedDays.filter((day) => day !== dayIndex)
+                : [...prevSelectedDays, dayIndex]
+        );
+    };
+
+    const toggleAllDays = () => {
+        setSelectedDays(selectedDays.length === 7 ? [] : [0, 1, 2, 3, 4, 5, 6]);
+    };
+
     const handleSaveCombo = async () => {
-        await saveProgram(exercises);
+        await saveProgram({ exercises, days: selectedDays });
         alert('Combo saved successfully!');
         loadSavedCombos();
     };
 
     const handleClearAll = () => {
         setExercises([]);
+        setSelectedDays([]);
     };
 
     return (
@@ -152,20 +190,28 @@ function ExerciseList() {
                     />
                 ))}
             </div>
+                <hr />
+            <h3 className='select-days'>Days of Week</h3>
+            <WeekdaysSelector selectedDays={selectedDays} onDaySelect={handleDaySelect} toggleAllDays={toggleAllDays} />
+            <Notes/>
+
             <button onClick={handleSaveCombo} style={{ marginRight: '.5rem' }}>Save as Combo</button>
             <button onClick={handleClearAll}>Clear All</button>
 
             <h3>Saved Combos</h3>
             <div className="saved-combos">
                 <ul>
-                    {savedCombos.map((combo, idx) => (
-                        <li key={idx}>
-                            Combo {idx + 1}: {combo.map((ex) => ex.name).join(', ')}
-                        </li>
-                    ))}
+                    {savedCombos && savedCombos.length > 0 ? (
+                        savedCombos.map((combo, idx) => (
+                            <li key={idx}>
+                                Combo {idx + 1}: {combo.exercises ? combo.exercises.map((ex) => ex.name).join(', ') : 'No exercises'}
+                            </li>
+                        ))
+                    ) : (
+                        <p>No combos saved.</p>
+                    )}
                 </ul>
             </div>
-
         </DndProvider>
     );
 }
