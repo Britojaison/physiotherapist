@@ -52,6 +52,22 @@ button:hover {
   background-color: #004d40;
 }
 
+.clear-button {
+  background-color: white; 
+  border: 1px solid red; 
+  color: black; 
+  padding: 8px 12px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.clear-button:hover {
+  background-color: rgba(255, 0, 0, 0.1);
+  border-color: red; 
+}
+
+
 .toggle-slider {
   position: relative;
   width: 120px;
@@ -131,6 +147,14 @@ input[type="radio"]:checked:nth-of-type(2) ~ .toggle-button {
   background-color: #b2ebf2;
 }
 
+.schedule-container {
+  display: flex;
+  justify-content: space-between; /* Aligns items to the left and right */
+  align-items: center; /* Centers items vertically */
+  padding: 1rem; /* Optional: padding for better spacing */
+}
+
+
 .select-days{
   text-align: start;
 }
@@ -165,4 +189,12 @@ input[type="radio"]:checked:nth-of-type(2) ~ .toggle-button {
 .select-all-button{
   width: 7.1rem;
   height: 1.8rem;
+}
+
+.decrement {
+  background-color:#ccc ;
+}
+
+.increment {
+ background-color:#ccc ;
 }

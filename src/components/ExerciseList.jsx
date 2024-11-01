@@ -171,6 +171,18 @@ function ExerciseList() {
         setExercises([]);
         setSelectedDays([]);
     };
+    const [sessions, setSessions] = useState(10);
+
+    const handleDecrement = () => {
+        if (sessions > 0) {
+            setSessions(sessions - 1);
+        }
+    };
+
+    // Function to handle increment
+    const handleIncrement = () => {
+        setSessions(sessions + 1);
+    };
 
     return (
         <DndProvider backend={HTML5Backend}>
@@ -190,13 +202,27 @@ function ExerciseList() {
                     />
                 ))}
             </div>
-                <hr />
-            <h3 className='select-days'>Days of Week</h3>
-            <WeekdaysSelector selectedDays={selectedDays} onDaySelect={handleDaySelect} toggleAllDays={toggleAllDays} />
-            <Notes/>
+            <hr />
+            <div className="schedule-container">
+                <div>
+                    <h3 className='select-days'>Days of Week</h3>
+                    <WeekdaysSelector selectedDays={selectedDays} onDaySelect={handleDaySelect} toggleAllDays={toggleAllDays} />
+                </div>
+
+                <div className="daily-frequency">
+                    <h3 className="label">Daily Frequency</h3>
+                    <div className="frequency-controls">
+                        <button className="decrement" onClick={handleDecrement}>-</button>
+                        <span className="frequency">{sessions}</span>
+                        <button className="increment" onClick={handleIncrement}>+</button> sessions/day
+                    </div>
+                </div>
+            </div>
+            <Notes />
 
             <button onClick={handleSaveCombo} style={{ marginRight: '.5rem' }}>Save as Combo</button>
-            <button onClick={handleClearAll}>Clear All</button>
+            <button className="clear-button" onClick={handleClearAll}>Clear All</button>
+
 
             <h3>Saved Combos</h3>
             <div className="saved-combos">
