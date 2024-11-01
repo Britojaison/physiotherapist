@@ -30,56 +30,31 @@
       "exercises": [
         {
           "name": "Squats",
-          "sets": 3,
-          "reps": 10,
-          "holdTime": 5,
-          "side": "Left"
-        },
-        {
-          "name": "Bicep Curls",
-          "sets": 3,
-          "reps": 10,
-          "holdTime": 5,
-          "side": "Left"
-        }
-      ],
-      "days": [
-        2,
-        4
-      ]
-    },
-    {
-      "exercises": [
-        {
-          "name": "Squats",
-          "sets": 3,
-          "reps": 10,
-          "holdTime": 5,
-          "side": "Left"
-        }
-      ],
-      "days": []
-    },
-    {
-      "exercises": [
-        {
-          "name": "Squats",
           "sets": 5,
           "reps": 10,
           "holdTime": 5,
-          "side": "Left"
+          "side": "Right"
         },
         {
           "name": "Bicep Curls",
-          "sets": 3,
+          "sets": 1,
           "reps": 10,
           "holdTime": 5,
           "side": "Left"
+        },
+        {
+          "name": "Plank",
+          "sets": 5,
+          "reps": 10,
+          "holdTime": 6,
+          "side": "Right"
         }
       ],
       "days": [
+        4,
+        3,
         1,
-        0
+        6
       ]
     }
   ]

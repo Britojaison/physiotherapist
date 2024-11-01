@@ -105,6 +105,7 @@ button:hover {
 }
 
 .delete-bin{
+  padding: .5rem;
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -210,6 +211,12 @@ input[type="radio"]:checked:nth-of-type(2) ~ .toggle-button {
   justify-content: space-between; /* Aligns items to the left and right */
   align-items: center; /* Centers items vertically */
   padding: 1rem; /* Optional: padding for better spacing */
+}
+
+.frequency{
+  font-weight: 700;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 
